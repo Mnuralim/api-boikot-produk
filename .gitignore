@@ -1,2 +1,6 @@
 /.env
 /node_modules
+/products.json
+/products2.json
+/productsboycot.json
+/productsfullbackup.json
