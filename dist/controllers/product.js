@@ -90,6 +90,7 @@ const findByQrId = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 exports.findByQrId = findByQrId;
 const addProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { qrid, name, imageUrl, brand } = req.body;
+    console.log({ qrid, name, imageUrl, brand });
     try {
         const product = yield products_1.default.findOne({ qrId: qrid });
         if (product)

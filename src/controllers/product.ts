@@ -82,6 +82,7 @@ export const findByQrId = async (req: Request, res: Response, next: NextFunction
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) => {
   const { qrid, name, imageUrl, brand } = req.body;
+  console.log({ qrid, name, imageUrl, brand });
 
   try {
     const product = await Product.findOne({ qrId: qrid });
