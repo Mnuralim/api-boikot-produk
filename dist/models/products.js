@@ -41,6 +41,9 @@ const productSchema = new mongoose_1.Schema({
         type: String,
         default: "https://i0.wp.com/thealmanian.com/wp-content/uploads/2019/01/product_image_thumbnail_placeholder.png?ssl=1",
     },
+    brand: {
+        type: String,
+    },
 }, {
     timestamps: true,
 });

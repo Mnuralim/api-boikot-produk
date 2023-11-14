@@ -48,14 +48,15 @@ const getAllProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, func
 });
 exports.getAllProduct = getAllProduct;
 const updateProducts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name } = req.query;
+    const { name, imageUrl } = req.query;
     try {
         const filterData = {};
         if (name) {
             filterData.name = { $regex: ".*" + name + ".*", $options: "i" };
         }
         yield products_1.default.updateMany(filterData, {
-            boycot: true,
+            // boycot: true,
+            imageUrl,
         });
         res.status(200).json({
             success: true,
@@ -88,7 +89,7 @@ const findByQrId = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 });
 exports.findByQrId = findByQrId;
 const addProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const { qrid, name, imageUrl } = req.body;
+    const { qrid, name, imageUrl, brand } = req.body;
     try {
         const product = yield products_1.default.findOne({ qrId: qrid });
         if (product)
@@ -97,6 +98,7 @@ const addProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             qrId: qrid,
             name,
             imageUrl,
+            brand,
         });
         res.status(200).json({
             success: true,

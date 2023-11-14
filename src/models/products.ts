@@ -5,6 +5,7 @@ export interface IProduct extends Document {
   name: string;
   boycot: boolean;
   imageUrl: string;
+  brand: string;
 }
 
 const productSchema = new Schema<IProduct>(
@@ -24,6 +25,9 @@ const productSchema = new Schema<IProduct>(
     imageUrl: {
       type: String,
       default: "https://i0.wp.com/thealmanian.com/wp-content/uploads/2019/01/product_image_thumbnail_placeholder.png?ssl=1",
+    },
+    brand: {
+      type: String,
     },
   },
   {

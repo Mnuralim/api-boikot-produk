@@ -39,7 +39,7 @@ export const getAllProduct = async (req: Request, res: Response, next: NextFunct
 };
 
 export const updateProducts = async (req: Request, res: Response, next: NextFunction) => {
-  const { name } = req.query;
+  const { name, imageUrl } = req.query;
 
   try {
     const filterData = {} as { name: any };
@@ -47,7 +47,8 @@ export const updateProducts = async (req: Request, res: Response, next: NextFunc
       filterData.name = { $regex: ".*" + name + ".*", $options: "i" };
     }
     await Product.updateMany(filterData, {
-      boycot: true,
+      // boycot: true,
+      imageUrl,
     });
 
     res.status(200).json({
@@ -80,7 +81,7 @@ export const findByQrId = async (req: Request, res: Response, next: NextFunction
 };
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) => {
-  const { qrid, name, imageUrl } = req.body;
+  const { qrid, name, imageUrl, brand } = req.body;
 
   try {
     const product = await Product.findOne({ qrId: qrid });
@@ -90,6 +91,7 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
       qrId: qrid,
       name,
       imageUrl,
+      brand,
     });
 
     res.status(200).json({
